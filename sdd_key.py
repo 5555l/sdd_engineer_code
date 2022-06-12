@@ -3,7 +3,7 @@
 #
 # its a fudge using the last 6 digits of the VIN and the time (24hr clock) when SDD opens the session
 # these values are then mapped (substitution cipher style) against a dictionary to produce the seed
-# seed[0] = vin[0]  - this is a letter for JLR
+# seed[0] = vin[0]  - this is a letter for Jaguar
 # seed[1] = time[1] - the ten digit of the hour
 # seed[2] = vin[2]  - thousand digit of vin
 # seed[3] = time[2] - the unit digit of the hour
@@ -21,7 +21,7 @@
 # a dictionary to produce the main part of the password
 # password[0] = seed[5] = time[3] - ten digit of the minutes
 # password[1] = seed[3] = time[2] - the unit digit of the hour
-# password[2] = seed[0] = vin[0]  - this is a letter for JLR
+# password[2] = seed[0] = vin[0]  - this is a letter for Jaguar
 # password[3] = seed[6] = vin[4]  - ten digit of the vin
 # password[4] = seed[9] = vin[1]  - 10 thousand digit of the vin
 # password[5] = seed[1] = time[1] - the ten digit of the hour
@@ -55,7 +55,6 @@ def seedgen(vin,dt):
     # Swap the values for the ones in the seed substitution cipher dictionary
     for idx in range(len(sdc)):
         sdc[idx] = str(dt.get(sdc[idx]))
-        #seed += sd[idx]
 
     # Join all the values together to make the seed    
     seed_c = "".join(sdc)
@@ -76,13 +75,13 @@ pt = dict(zip(list(s_cipher), list(p_cipher)))
 
 # Option codes for Jaguar
 jopt = {
-    'X351_ODO_APP':'AC',
-    'SOFTWARE_DOWNLOAD':'LC',
-    'X250_ODO_APP':'PC',
-    'CCF_EDITOR':'CR',
     'X150_ODO_APP':'CA',
     'VIN_BLOCK_EDITOR':'CL',
     'VIN_BYPASS':'CP',
+    'CCF_EDITOR':'CR',
+    'X351_ODO_APP':'AC',
+    'SOFTWARE_DOWNLOAD':'LC',
+    'X250_ODO_APP':'PC',
     'X351_RECOVER_KEYS':'RC'
     }
 
@@ -263,7 +262,7 @@ if gen == False and seed != '':
     try:
         testtime = datetime.strptime(time, "%H%M")
     except ValueError:
-        print('Invalid time in seed, expected 24h time got:', time)
+        print('Invalid time in seed, expected a 24h time got:', time)
         sys.exit(2)
 
 #####################################################################################
