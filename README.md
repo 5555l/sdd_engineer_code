@@ -2,7 +2,7 @@
 
 Generate SDD engineer passwords for functions such as CCF editing.
 
-It only needs to know the `seed` and the `type` (Jaguar/Landrover) in order to generate the `password`. However it's advised to always provide `--vin` with `--seed` to ensure the seed matches the target vehicle to prevent incorrect passwords being generated.
+It only needs to know the `seed` and the `type` (Jaguar/Landrover) in order to generate the `password` for CCF editing. However it's advised to always provide `--vin` with `--seed` to ensure the seed matches the target vehicle to prevent incorrect passwords being generated.
 
 If you don't provide a `VIN` it will output the last 6 digits of the `VIN` that it derives from the `seed` so you can double check it against the vehicle `VIN` to make sure it matches.
 
@@ -16,7 +16,7 @@ There maybe a security lockout by SDD or the ECU if you send it too many incorre
 |`-s / --seed <seed>`|SDD seed of the target vehicle|
 |`--g / --gen`|Generate a seed for the provided `VIN` - will override `--seed`. This option probably isn't very useful in real life, it's mostly used for testing this code|
 |`-t / --type <JAG ¦ LR>`|Manually set vehicle type to Jaguar or Landrover instead of trying work it out from the `VIN`|
-|`-o / --option <option>`|[SDD access option](#sdd-access-option)|
+|`-o / --option <option>`|[SDD access option](#sdd-access-option), it will default to CCF_EDITOR if this isn't provided|
 
 It's mandatory to provide at least one of these combinations:
 
