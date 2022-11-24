@@ -4,7 +4,9 @@ Generate SDD engineer passwords for functions such as CCF editing.
 
 It only needs to know the `seed` and the `type` (Jaguar/Landrover) in order to generate the `password`. However it's advised to always provide `--vin` with `--seed` to ensure the seed matches the target vehicle to prevent incorrect passwords being generated.
 
-There maybe a security lockout by SDD or the ECU if you send it too many incorrect passwords - this is a presumption and has not been tested, don't blame me if you lockup your modules because you didn't check the seed matched the VIN.
+If you don't provide a `VIN` it will output the last 6 digits of the `VIN` that it derives from the `seed` so you can double check it against the vehicle `VIN` to make sure it matches.
+
+There maybe a security lockout by SDD or the ECU if you send it too many incorrect passwords - this is a presumption and has not been tested, don't blame me if you lockup your modules because you didn't check the `seed` matched the `VIN`.
 
 ## Arguments
 
