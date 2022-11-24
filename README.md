@@ -16,7 +16,7 @@ There maybe a security lockout by SDD or the ECU if you send it too many incorre
 |`-s / --seed <seed>`|SDD seed of the target vehicle|
 |`--g / --gen`|Generate a seed for the provided `VIN` - will override `--seed`. This option probably isn't very useful in real life, it's mostly used for testing this code|
 |`-t / --type <JAG ¦ LR>`|Manually set vehicle type to Jaguar or Landrover instead of trying work it out from the `VIN`|
-|`-o / --option <option>`|[SDD access option](#sdd-access-option), it will default to CCF_EDITOR if this isn't provided|
+|`-o / --option <option>`|[SDD access option](#sdd-access-option), it will default to `CCF_EDITOR` if this isn't provided|
 
 It's mandatory to provide at least one of these combinations:
 
