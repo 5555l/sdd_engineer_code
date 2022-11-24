@@ -123,7 +123,7 @@ help_text = ("\noptions:\n"
              "   -s / --seed <seed>..........  SDD seed of the target vehicle\n"
              "   -g / --gen .................  Generate a seed for the provided VIN - will override --seed\n"
              "                                 This option probably isn't very useful in real life, it's mostly used for testing this code\n"
-             "   -t / --type <JAG ¦ LR>......  Manually set vehicle type, by default it will try work it out from the VIN\n"
+             "   -t / --type <JAG ¦ LR>......  Manually set vehicle type instead of trying work it out from the VIN\n"
              "   -o / --option <option>......  SDD access option.\n"
              "                                 Valid Jaguar options are:\n"
              "                                      X351_ODO_APP\n"
@@ -144,7 +144,10 @@ help_text = ("\noptions:\n"
              "                                      L322_ODO_APP\n"
              "                                      OPTION_8\n\n"             
              "                                 Defaults to CCF_EDITOR if none provided\n\n"
-             "A VIN and either a seed (--seed) or --gen must be provided\n")
+             "Mandatory to provide at least one of these combinations:\n"
+             "   --seed and --type\n"
+             "   --vin and --gen\n"
+             "\nIt's advised to always provide --vin with --seed to ensure the seed matches the target vehicle to prevent incorrect passwords being generated\n")
 
 #####################################################################################
 # Test for command line options
@@ -162,6 +165,8 @@ for current_argument, current_value in arguments:
         sys.exit(2)
     elif current_argument in ("-v", "--vin"):
         fvin = current_value.upper()
+        # You don't actually need the full VIN in order to create or check the seed, it just uses the last 6 digits,
+        # so shove them into a handy variable. 
         vin = fvin[11:17]
     elif current_argument in ("-s", "--seed"):
         seed = current_value.upper()
@@ -177,9 +182,9 @@ ext = False
 #####################################################################################
 # Check if provided arguments make sense
 
-# Check if both a VIN and seed have been provided
-if fvin == '' or (seed == '' and gen == False):
-    print("Both VIN and seed are needed, use --gen to make a seed if you don't have one")
+# Check if minimum options have been provided provided
+if (fvin == '' and vt == '') or (seed == '' and gen == False):
+    print("Either \'--seed and --type\' or \'--vin and --gen\' must be provided")
     ext = True
 
 # Check type is supported vehicle
@@ -189,13 +194,17 @@ if vt == 'JAG':
 elif vt == 'LR':
     vtype = 'Landrover'
     optcodes = lopt
-elif vt != '':
-    print('Unsupported vehicle type, ignoring user provided value')
+elif vt != '' and fvin != '':
+        print('Unsupported vehicle type, ignoring user provided value and using VIN')
+elif vt != '' and fvin == '':
+        print('Unsupported vehicle type and no VIN provided. Expected JAG or LR, got',vt)
+        ext = True
 
 # Check the VIN looks roughly ok
 if fvin != '' and (len(fvin) != 17 or dt.get(vin[:1]) == None):
     print('VIN is not valid format, must be 17 chars and of supported type')
-    ext = True       
+    ext = True
+# Use the first 3 characters of the VIN to guess the brand (i.e. its a Jag or Landy)           
 if vtype == '' and fvin != '' and fvin[:3] == 'SAJ':
     vtype = 'Jaguar'
     optcodes = jopt
@@ -256,7 +265,7 @@ if gen == False and seed != '':
         time += str(rdt.get(ch))
 
     # compare the provided VIN with the reverse engineered VIN
-    if vin != rvin:
+    if fvin != '' and vin != rvin:
         print('Seed does not match VIN, expected:', vin,'but seed is for:', rvin)
         sys.exit(2)
 
@@ -299,5 +308,12 @@ elif vtype == 'Landrover':
     ops = 'CC' + optcodes.get(opt)
 password += ops
 
+if fvin != '':
+    pvin = fvin
+    vout = "VIN:"
+else:
+    pvin = rvin
+    vout = "VIN ending in:"
+
 # We're all done, print it all out and go home
-print('VIN:', fvin, ' Brand:', vtype,' Seed:', seed, ' Password', '('+ opt + '):', password)
+print(vout, pvin, ' Brand:', vtype,' Seed:', seed, ' Password', '('+ opt + '):', password)
