@@ -1,4 +1,4 @@
-# sdd_engineer_code
+# SDD engineer code generator
 
 Generate SDD engineer passwords for functions such as CCF editing.
 
