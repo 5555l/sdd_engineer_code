@@ -12,7 +12,7 @@ There maybe a security lockout by SDD or the ECU if you send it too many incorre
 
 | Argument | Description |
 |:------|:------------|
-|`-v / --vin <VIN>`|VIN of the target vehicle|
+|`-v / --vin <VIN>`|`VIN` of the target vehicle|
 |`-s / --seed <seed>`|SDD seed of the target vehicle|
 |`--g / --gen`|Generate a seed for the provided `VIN` - will override `--seed`. This option probably isn't very useful in real life, it's mostly used for testing this code|
 |`-t / --type <JAG ¦ LR>`|Manually set vehicle type to Jaguar (`JAG`) or Landrover (`LR`) instead of trying work it out from the `VIN`|
@@ -20,9 +20,11 @@ There maybe a security lockout by SDD or the ECU if you send it too many incorre
 
 It's mandatory to provide at least one of these combinations:
 
- `--seed` and `--type`
+`--seed` and `--vin`
 
- `--vin` and `--gen`
+`--seed` and `--type`
+
+`--vin` and `--gen`
 
 ## SDD access option
 

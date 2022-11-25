@@ -145,6 +145,7 @@ help_text = ("\noptions:\n"
              "                                      OPTION_8\n\n"             
              "                                 Defaults to CCF_EDITOR if none provided\n\n"
              "Mandatory to provide at least one of these combinations:\n"
+             "   --seed and --vin\n"
              "   --seed and --type\n"
              "   --vin and --gen\n"
              "\nIt's advised to always provide --vin with --seed to ensure the seed matches the target vehicle to prevent incorrect passwords being generated\n")
@@ -177,14 +178,14 @@ for current_argument, current_value in arguments:
     elif current_argument in ("-t", "--type"):
         vt = current_value.upper() 
     
-ext = False
-
 #####################################################################################
 # Check if provided arguments make sense
 
 # Check if minimum options have been provided provided
-if (fvin == '' and vt == '') or (seed == '' and gen == False):
-    print("Either \'--seed and --type\' or \'--vin and --gen\' must be provided")
+if (fvin != '' and seed != '') or (fvin != '' and gen == True) or (seed != '' and vt != ''):
+    ext = False
+else:
+    print("Incorrect combination of options provided")
     ext = True
 
 # Check type is supported vehicle
