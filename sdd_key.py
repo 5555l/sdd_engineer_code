@@ -181,7 +181,7 @@ for current_argument, current_value in arguments:
 #####################################################################################
 # Check if provided arguments make sense
 
-# Check if minimum options have been provided provided
+# Check if minimum options have been provided
 if (fvin != '' and seed != '') or (fvin != '' and gen == True) or (seed != '' and vt != ''):
     ext = False
 else:
