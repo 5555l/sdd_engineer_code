@@ -229,7 +229,7 @@ if ext == True:
     sys.exit(2) 
 
 #####################################################################################
-# Seems we got sensible things so do stuff with them
+# Seems we got sensible things, lets do stuff with them
 
 # If asked to generate a seed go and do it
 if gen == True:
