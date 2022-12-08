@@ -64,9 +64,6 @@ def seedgen(vin,dt):
 cipher_key = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 s_cipher =   'G7HM8CPLFAQW2R9Y1DE3SVU4O5KTJB6XNIZ0'
 p_cipher =   'CPLFAQW2R9Y1DB3SVU4E5K8JO6XNGZTH7IM0'
-# These two ciphers are *almost* the same with a 5 byte offset.
-# It could be they are the same and the mismatched values are
-# VIN's that are never used IRL so it doesn't matter
 
 # Set seed and password cipher dictionaries 
 # seed is just the cipher as is
