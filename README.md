@@ -55,5 +55,6 @@ It's mandatory to provide at least one of these combinations:
 |:------|:-----|:------------|
 |Jaguar|X250|2008|
 |Jaguar|X250|2010|
+|Jaguar|X150|2007|
 
 Feedback about working with other VIN's would be useful
