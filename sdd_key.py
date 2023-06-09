@@ -98,7 +98,7 @@ landrover_options = {
     'OPTION_8':'RC'
 }
 
-# Create a reverse lookup for the seed to make it easy to check later
+# Create a reverse lookup for the seed cipher to make it easy to check later
 seed_reverse_lookup = {}
 for seed_key in seed_dictionary:
     seed_reverse_lookup[seed_dictionary.get(seed_key)]= seed_key
