@@ -98,11 +98,6 @@ landrover_options = {
     'OPTION_8':'RC'
 }
 
-# Create a reverse lookup for the seed cipher to make it easy to check later
-seed_reverse_lookup = {}
-for seed_key in seed_dictionary:
-    seed_reverse_lookup[seed_dictionary.get(seed_key)]= seed_key
-
 # set some defaults
 full_vin=seed=vehicle_type=brand_type=''
 generate_seed = False
@@ -243,6 +238,12 @@ seed_list=list(seed)
 
 # Reverse engineer the VIN and time from the user provided seed so we can check it makes sense
 if generate_seed == False and seed != '':
+    
+    # Create a reverse lookup for the seed cipher to make it easy to check
+    seed_reverse_lookup = {}
+    for seed_key in seed_dictionary:
+        seed_reverse_lookup[seed_dictionary.get(seed_key)]= seed_key
+
     reversed_time = reversed_vin = ''
     reversed_vin_list  = [0]*6
     reversed_time_list = [0]*4
