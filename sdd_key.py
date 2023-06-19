@@ -69,9 +69,9 @@ seed_cipher =       'G7HM8CPLFAQW2R9Y1DE3SVU4O5KTJB6XNIZ0'
 password_cipher =   'CPLFAQW2R9Y1DB3SVU4E5K8JO6XNGZTH7IM0'
 
 # Set seed and password cipher dictionaries 
-# seed is just the cipher as is
+# seed uses the cipher_key as the keys and the seed_cipher as the values
 seed_dictionary = dict(zip(list(cipher_key), list(seed_cipher)))
-# password cipher uses the seed cipher as the key
+# password cipher uses the seed_cipher as the keys and password_cipher as the values
 password_dictionary = dict(zip(list(seed_cipher), list(password_cipher)))
 
 # Option codes for Jaguar
@@ -161,8 +161,7 @@ for current_argument, current_value in arguments:
         sys.exit(2)
     elif current_argument in ("-v", "--vin"):
         full_vin = current_value.upper()
-        # You don't actually need the full VIN in order to create or check the seed, it just uses the last 6 digits,
-        # so shove them into a handy variable. 
+        # You don't actually need the full VIN in order to create or check the seed, it just uses the last 6 digits, so shove them into a handy variable. 
         short_vin = full_vin[11:17]
     elif current_argument in ("-s", "--seed"):
         seed = current_value.upper()
