@@ -3,8 +3,8 @@
 #
 # its a fudge using the last 6 digits of the VIN and the time (24hr clock) when SDD opens the session
 # these values are then mapped (substitution cipher style) against a dictionary to produce the seed
-# seed[0] = vin[0]  - 100 thousand digit of the vin, this is a letter for Jaguar
 #
+# seed[0] = vin[0]  - 100 thousand digit of the vin, this is a letter for Jaguar
 # seed[1] = time[1] - the ten digit of the hour
 # seed[2] = vin[2]  - thousand digit of vin
 # seed[3] = time[2] - the unit digit of the hour
