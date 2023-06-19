@@ -40,7 +40,7 @@ from datetime import datetime
 
 # Generate a seed if needed - not really useful in practice, mostly used to test this code
 def generate_random_seed(short_vin,seed_dictionary):
-    # create a random time
+    # create a random time, with python random.range(x,y) means equal or greater than x, to less than y
     random_time = str(random.randrange(0, 24)).zfill(2) + ':' + str(random.randrange(0, 61)).zfill(2)
     random_seed_list = [0] * 10
     # take the values from the VIN and time and put them in the right places in the seed
