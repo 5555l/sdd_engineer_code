@@ -303,10 +303,11 @@ password = "".join(password_list)
 
 # to finish off the password we just need to append the engineering option to the end
 # first 2 bytes are Jaguar options, last 2 bytes are Landrover options. Pad with "CC" where needed.
+padding='CC'
 if vehicle_type == 'Jaguar':
-    options = option_codes.get(access_option) + 'CC'
+    options = option_codes.get(access_option) + padding
 elif vehicle_type == 'Landrover':
-    options = 'CC' + option_codes.get(access_option)
+    options = padding + option_codes.get(access_option)
 password += options
 
 # how we display the VIN output depends on what input we got, so decide that here
