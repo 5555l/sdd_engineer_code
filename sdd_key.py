@@ -302,7 +302,7 @@ for password_key in range(len(password_list)):
 password = "".join(password_list)
 
 # to finish off the password we just need to append the engineering option to the end
-# first 2 bytes are Jaguar options, last 2 bytes are Landrover options. Pad with "CC" where needed.
+# first 2 characters are Jaguar options, last 2 characters are Landrover options. Pad with "CC" where needed.
 padding='CC'
 if vehicle_type == 'Jaguar':
     options = option_codes.get(access_option) + padding
