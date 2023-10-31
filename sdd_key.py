@@ -64,15 +64,15 @@ def generate_random_seed(short_vin,seed_dictionary):
     return random_seed
 
 # base substitution cipher used by JLR
-cipher_key =        '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-seed_cipher =       'G7HM8CPLFAQW2R9Y1DE3SVU4O5KTJB6XNIZ0'
-password_cipher =   'CPLFAQW2R9Y1DB3SVU4E5K8JO6XNGZTH7IM0'
+base_cipher_key =          '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+seed_cipher_values =       'G7HM8CPLFAQW2R9Y1DE3SVU4O5KTJB6XNIZ0'
+password_cipher_values =   'CPLFAQW2R9Y1DB3SVU4E5K8JO6XNGZTH7IM0'
 
 # Set seed and password cipher dictionaries 
 # seed uses the cipher_key as the keys and the seed_cipher as the values
-seed_dictionary = dict(zip(list(cipher_key), list(seed_cipher)))
+seed_cipher = dict(zip(list(base_cipher_key), list(seed_cipher_values)))
 # password cipher uses the seed_cipher as the keys and password_cipher as the values
-password_dictionary = dict(zip(list(seed_cipher), list(password_cipher)))
+password_cipher = dict(zip(list(seed_cipher_values), list(password_cipher_values)))
 
 # Option codes for Jaguar
 jaguar_options = {
@@ -196,7 +196,7 @@ elif brand_type != '' and full_vin == '':
         exit_status = True
 
 # Check the VIN looks roughly ok
-if full_vin != '' and (len(full_vin) != 17 or seed_dictionary.get(short_vin[:1]) == None):
+if full_vin != '' and (len(full_vin) != 17 or seed_cipher.get(short_vin[:1]) == None):
     print('VIN is not valid format, must be 17 chars and of supported type')
     exit_status = True
 # Use the first 3 characters of the VIN to guess the brand (i.e. its a Jag or Landy)           
@@ -230,7 +230,7 @@ if exit_status == True:
 
 # If asked to generate a seed go and do it
 if generate_seed == True:
-    seed = generate_random_seed(short_vin,seed_dictionary)
+    seed = generate_random_seed(short_vin,seed_cipher)
 
 # Turn the seed into a list
 seed_list=list(seed)
@@ -240,8 +240,8 @@ if generate_seed == False and seed != '':
     
     # Create a reverse lookup for the seed cipher to make it easy to check
     seed_reverse_lookup = {}
-    for seed_key in seed_dictionary:
-        seed_reverse_lookup[seed_dictionary.get(seed_key)]= seed_key
+    for seed_key in seed_cipher:
+        seed_reverse_lookup[seed_cipher.get(seed_key)]= seed_key
 
     reversed_time = reversed_vin = ''
     reversed_vin_list  = [0]*6
@@ -296,7 +296,7 @@ password_list[9] = seed_list[4]
 
 # Swap the values for the ones in the password substitution cipher dictionary
 for password_key in range(len(password_list)):
-    password_list[password_key] = str(password_dictionary.get(password_list[password_key]))
+    password_list[password_key] = str(password_cipher.get(password_list[password_key]))
 
 # put the password into a string
 password = "".join(password_list)
