@@ -5,13 +5,13 @@
 # these values are then mapped (substitution cipher style) against a dictionary to produce the seed
 #
 # seed[0] = vin[0]  - 100 thousand digit of the vin, this is a letter for Jaguar
-# seed[1] = time[1] - the ten digit of the hour
+# seed[1] = time[0] - the ten digit of the hour
 # seed[2] = vin[2]  - thousand digit of vin
-# seed[3] = time[2] - the unit digit of the hour
+# seed[3] = time[1] - the unit digit of the hour
 # seed[4] = vin[3]  - hundred digit of the vin
-# seed[5] = time[3] - ten digit of the minutes
+# seed[5] = time[2] - ten digit of the minutes
 # seed[6] = vin[4]  - ten digit of the vin
-# seed[7] = time[4] - unit digit of the minutes
+# seed[7] = time[3] - unit digit of the minutes
 # seed[8] = vin[5]  - unit digit of the vin
 # seed[9] = vin[1]  - 10 thousand digit of the vin
 #
@@ -21,13 +21,13 @@
 # These values are also mapped (substitution cipher) from the seed against
 # a dictionary to produce the main part of the password
 #
-# password[0] = seed[5] = time[3] - ten digit of the minutes
-# password[1] = seed[3] = time[2] - the unit digit of the hour
+# password[0] = seed[5] = time[2] - ten digit of the minutes
+# password[1] = seed[3] = time[1] - the unit digit of the hour
 # password[2] = seed[0] = vin[0]  - 100 thousand digit of the vin, this is a letter for Jaguar
 # password[3] = seed[6] = vin[4]  - ten digit of the vin
 # password[4] = seed[9] = vin[1]  - 10 thousand digit of the vin
-# password[5] = seed[1] = time[1] - the ten digit of the hour
-# password[6] = seed[7] = time[4] - unit digit of the minutes
+# password[5] = seed[1] = time[0] - the ten digit of the hour
+# password[6] = seed[7] = time[3] - unit digit of the minutes
 # password[7] = seed[8] = vin[5]  - unit digit of the vin
 # password[8] = seed[2] = vin[2]  - thousand digit of vin
 # password[9] = seed[4] = vin[3]  - hundred digit of the vin

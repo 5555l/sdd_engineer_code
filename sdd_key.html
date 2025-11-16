@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SDD Key Generator</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    label, input { display: block; margin: 0.5em 0; }
+  .result { margin-top: 1em; font-weight: normal; }
+  .password-value { font-family: Courier, monospace; font-weight: normal; font-size: 1.5em; }
+  </style>
+</head>
+<body>
+  <h1>SDD Key Generator</h1>
+  <form id="keyForm">
+    <label for="vin">VIN (full or last 6 digits):</label>
+    <input type="text" id="vin" required>
+    <label for="seed">Seed:</label>
+    <input type="text" id="seed" required>
+    <label for="brand">Brand:</label>
+    <select id="brand" onchange="updateOptions()">
+      <option value="JAG">Jaguar</option>
+      <option value="LR">Landrover</option>
+    </select>
+    <label for="optionSelect">Access Option:</label>
+    <select id="optionSelect">
+    <!-- Options will be populated by JS -->
+  </select>
+    <br><br><button type="submit">Generate Password</button>
+  </form>
+  <div class="result" id="result"></div>
+  <script src="scripts/sddPasswordCalculator.js"></script>
+  <script src="scripts/sddUI.js"></script>
+
+  <script>
+
+  </script>
+</body>
+</html>
