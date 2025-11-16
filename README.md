@@ -11,7 +11,7 @@ If you provide a full VIN it will autodetect the correct brand based on the VIN.
 
 ### Developer notes
 
-If you want to use the JS outside of the web page 'scripts/sddPasswordCalculator.js' should do all the hard work for you. Simply call 'createSddEngineerCode(seed, vin, brand, accessOption)' and it should return an object with the following properties '{ error, password, brand, seedTime, seedVin }'. Valid option codes are defined in the 'JAGUAR_OPTIONS' & 'LANDROVER_OPTIONS' consts.
+If you want to use the JS outside of the web page `scripts/sddPasswordCalculator.js` should do all the hard work for you. Simply call `createSddEngineerCode(seed, vin, brand, accessOption)` and it should return an object with the following properties `{ error, password, brand, seedTime, seedVin }`. Valid option codes are defined in the `JAGUAR_OPTIONS` & `LANDROVER_OPTIONS` consts.
 
 ## **Python version**
 
