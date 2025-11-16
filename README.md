@@ -4,10 +4,10 @@ Generate SDD engineer passwords for functions such as CCF editing.
 
 ## **Javascript version**
 
-Simply open sdd_key.html with your browser, just follow the onscreen instructions from there.  
+Simply open **`sdd_key.html`** with your browser, just follow the onscreen instructions from there.  
 **Javascript must not be blocked from being run by the browser.**
 
-If you provide a full VIN it will autodetect the correct brand based on the VIN. If it doesn't recognise the brand from the VIN it will simply use whatever you have provided as the brand. However the option for Jaguar and Landrover use the same codes but they have different meanings so it will return a password using option code of the brand provided not the one it autodetected, which means it will be for a different option.
+If you provide a full VIN it will autodetect the correct brand based on the VIN. If it doesn't recognise the brand from the VIN it will simply use whatever you have provided as the brand. However the option for Jaguar and Landrover use the same codes but they have different meanings so it will return a password using the option code of the brand provided not the one it autodetected, which means it will be for a different option. It's best to make sure you provide the correct brand to avoid confusion.
 
 ### Developer notes
 
